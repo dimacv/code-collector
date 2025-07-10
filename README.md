@@ -16,5 +16,59 @@
 Оба скрипта поддерживают единообразный набор паттернов игнорирования и включения, описанных в начале файлов.
 
 ## Структура репозитория
+  
+repo-code-collector/
+├── collect_code.py
+├── collect_code.sh
+├── collected_code.txt # результат работы
+└── README.md
 
 
+## Быстрый старт
+
+1. **Клонируйте репозиторий**  
+   ```bash
+   git clone https://github.com/<your-org>/repo-code-collector.git
+   cd repo-code-collector
+## Запуск Python-скрипта
+
+python3 collect_code.py
+# → создаст collected_code.txt
+
+##  Запуск Bash-скрипта
+
+    bash collect_code.sh
+    # → создаст collected_code.txt
+
+## Конфигурация паттернов
+
+В начале обоих скриптов можно настроить:
+
+    ignore_file_patterns — список шаблонов имён файлов, игнорируемых при сборе
+
+    ignore_dir_patterns — список шаблонов директорий, игнорируемых при обходе
+
+    include_file_patterns — шаблоны файлов для включения в сборку
+
+Формат — однострочный перечень, разделённый запятыми.
+
+
+## Вывод и результаты
+
+    Скрипты выводят в корне репозитория файл collected_code.txt с:
+
+        Блоком «Структура проекта»
+
+        Разделителем ---
+
+        Затем содержимое каждого файла, подходящего по фильтрам.
+
+## Требования
+
+    Для collect_code.py:
+
+        Python 3.7+
+
+    Для collect_code.sh:
+
+        Bash 4+, утилиты tree, sed, awk
